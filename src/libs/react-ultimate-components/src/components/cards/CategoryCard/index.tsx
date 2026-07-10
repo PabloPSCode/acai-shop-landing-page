@@ -48,7 +48,7 @@ export default function CategoryCard({
       alt={name}
       width={96}
       height={96}
-      className="h-full w-full  object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+      className="h-full w-full object-cover"
       loading="lazy"
       sizes="(min-width: 768px) 96px, (min-width: 640px) 80px, 64px"
     />
@@ -68,18 +68,18 @@ export default function CategoryCard({
       role="button"
       rel={newTab ? "noopener noreferrer" : undefined}
       className={clsx(
-        "group flex flex-col items-center gap-3 rounded-xl border border-border-card bg-bg-card p-4 sm:p-5 shadow-sm text-foreground",
+        "group flex flex-col items-center gap-3 rounded-surface bg-bg-card p-4 sm:p-5 text-foreground",
         "min-h-[168px] sm:min-h-[190px]",
-        "transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400/40",
+        "transition-colors duration-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500",
         className
       )}
       aria-label={`Ver categoria ${name}`}
       onClick={onSeeCategory}
     >
-      <div className="flex w-full h-auto rounded-lg items-center justify-center overflow-hidden   bg-gray-200 text-primary-600 dark:text-primary-400 text-2xl sm:text-3xl transition-colors ">
+      <div className="flex w-full h-auto rounded-control items-center justify-center overflow-hidden bg-surface-alt text-primary-500 text-2xl sm:text-3xl">
         {media}
       </div>
-      <span className="min-w-0 break-words text-sm sm:text-base font-semibold text-primary-600 dark:text-primary-400 text-center leading-tight line-clamp-2">
+      <span className="min-w-0 break-words text-product-name font-medium tracking-normal text-carbon text-center leading-tight line-clamp-2">
         {name}
       </span>
     </div>

@@ -17,7 +17,7 @@ export default function Section({
     <section
       id={id}
       className={[
-        "w-full scroll-mt-28 py-14 sm:scroll-mt-32 sm:py-18",
+        "w-full scroll-mt-16 bg-background py-24 sm:py-32",
         className ?? "",
       ]
         .filter(Boolean)
@@ -25,7 +25,7 @@ export default function Section({
     >
       <div
         className={[
-          "mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 sm:px-6",
+          "mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 sm:px-6",
           containerClassName ?? "",
         ]
           .filter(Boolean)

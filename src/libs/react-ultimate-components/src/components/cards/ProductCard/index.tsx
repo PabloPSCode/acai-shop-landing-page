@@ -281,8 +281,8 @@ export default function ProductCard({
   return (
     <div
       className={clsx(
-        "group flex flex-col rounded-2xl border border-border-card bg-bg-card shadow-sm text-foreground",
-        "p-4 sm:p-5 gap-3 max-w-full w-full transition-transform hover:-translate-y-0.5 hover:shadow-md",
+        "group flex flex-col rounded-surface bg-bg-card text-foreground",
+        "p-4 sm:p-5 gap-3 max-w-full w-full",
         "min-h-[470px] sm:min-h-[510px]",
         className
       )}
@@ -301,7 +301,7 @@ export default function ProductCard({
             alt={title}
             width={640}
             height={640}
-            className="w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+            className="w-full object-cover"
             loading="lazy"
             sizes="(min-width: 768px) 33vw, 80vw"
           />
@@ -310,11 +310,11 @@ export default function ProductCard({
 
       {/* Título */}
       {ingredients.length > 0 && (
-        <div className="mb-1 min-h-[88px] rounded-xl bg-foreground/[0.03] px-4 py-3">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary-600">
+        <div className="mb-1 min-h-[88px] rounded-control bg-surface-alt px-4 py-3">
+          <span className="text-nav font-medium tracking-normal text-primary-500">
             Composição
           </span>
-          <ul className="mt-2 list-disc space-y-1 pl-5 text-xs text-foreground/70 sm:text-sm">
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-body text-pewter">
             {ingredients.slice(0, 4).map((ingredient) => (
               <li key={ingredient}>
                 <span className="block line-clamp-1 break-words">
@@ -326,7 +326,7 @@ export default function ProductCard({
         </div>
       )}
 
-      <h3 className="min-w-0 break-words text-sm sm:text-base md:text-lg font-semibold text-foreground uppercase tracking-tight mb-1 line-clamp-2">
+      <h3 className="min-w-0 break-words text-product-name font-medium tracking-normal text-carbon mb-1 line-clamp-2">
         {title}
       </h3>
 
@@ -340,16 +340,16 @@ export default function ProductCard({
         {showDeal && !dealExpired ? (
           <>
             {effectiveDealPrice < price && (
-              <p className="text-xs sm:text-sm text-foreground/60 font-semibold line-through">
+              <p className="text-body text-silver-fog line-through">
                 {formattedBasePrice}
               </p>
             )}
-            <p className="text-xl md:text-2xl font-extrabold text-foreground">
+            <p className="text-promo font-normal text-carbon">
               {formattedDealPrice}
             </p>
           </>
         ) : (
-          <p className="text-xl md:text-2xl font-extrabold text-foreground">
+          <p className="text-promo font-normal text-carbon">
             {formattedBasePrice}
           </p>
         )}
@@ -357,7 +357,7 @@ export default function ProductCard({
 
       {/* Parcelamento */}
       {installments && installmentValue ? (
-        <p className="text-xs sm:text-sm text-foreground mb-2 sm:mb-3">
+        <p className="text-body text-graphite mb-2 sm:mb-3">
           Em até {installments}x de {formatBRL(installmentValue)} sem juros
         </p>
       ) : (
@@ -384,12 +384,12 @@ export default function ProductCard({
           onClick={handlePrimaryAction}
           disabled={showDeal ? dealExpired : false}
           className={clsx(
-            "inline-flex items-center justify-center gap-2 rounded-md px-4 py-3",
-            "text-sm sm:text-base font-semibold transition",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300/60 cursor-pointer",
+            "inline-flex min-h-10 items-center justify-center gap-2 rounded-control px-4",
+            "text-nav font-medium tracking-normal transition-colors duration-base",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 cursor-pointer",
             showDeal && dealExpired
-              ? "text-background cursor-not-allowed text-white"
-              : "bg-primary-500 text-white"
+              ? "bg-cloud text-silver-fog cursor-not-allowed"
+              : "bg-primary-500 text-white hover:bg-primary-600"
           )}
           aria-label={`${ctaLabel} - ${title}`}
         >
@@ -401,10 +401,10 @@ export default function ProductCard({
             type="button"
             onClick={onShare}
             className="
-            inline-flex items-center justify-between gap-2
-            rounded-md border border-foreground/15 px-4 py-3
-            text-sm sm:text-base font-semibold text-foreground
-            transition hover:bg-foreground/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400/40
+            inline-flex min-h-10 items-center justify-between gap-2
+            rounded-control bg-bg-card px-4
+            text-nav font-medium tracking-normal text-graphite
+            transition-colors duration-base hover:bg-surface-alt focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500
           "
             aria-label={`${shareLabel} - ${title}`}
           >

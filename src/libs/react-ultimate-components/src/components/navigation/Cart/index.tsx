@@ -132,7 +132,7 @@ export default function Cart({
       >
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.28em] text-foreground/50">
+            <p className="text-body tracking-normal text-pewter">
               {eyebrow}
             </p>
             <h2 className="mt-2 text-lg font-semibold leading-tight sm:text-xl">

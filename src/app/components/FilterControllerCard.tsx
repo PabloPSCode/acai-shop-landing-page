@@ -35,7 +35,7 @@ export default function FilterControllerCard({
     <div
       className={clsx(
         "filter-controller-container Container",
-        "flex w-full flex-col gap-5 rounded-2xl border border-border-card bg-bg-card p-4 sm:p-5 text-foreground shadow-sm",
+        "flex w-full flex-col gap-8 rounded-surface bg-bg-card p-4 sm:p-5 text-foreground",
         className
       )}
     >
@@ -44,7 +44,7 @@ export default function FilterControllerCard({
         onClick={onResetFilters}
         className={clsx(
           "filter-controller-reset-button ResetFilterButton",
-          "w-fit text-xs sm:text-sm font-semibold text-foreground/70 hover:text-foreground transition"
+          "w-fit text-body font-normal text-pewter transition-colors duration-base hover:text-carbon hover:underline"
         )}
       >
         Limpar todos os filtros
@@ -58,10 +58,10 @@ export default function FilterControllerCard({
         )}
       >
         <div className="filter-controller-section-header flex flex-col gap-2">
-          <h3 className="filter-controller-section-title FilterControllerSectionTitle text-sm sm:text-base font-bold uppercase tracking-wide">
+          <h3 className="filter-controller-section-title FilterControllerSectionTitle text-product-name font-medium tracking-normal text-carbon">
             Categoria
           </h3>
-          <span className="filter-controller-section-divider h-px w-full bg-foreground/10" />
+          <span className="filter-controller-section-divider h-px w-full bg-cloud" />
         </div>
 
         <div className="filter-controller-section-content flex flex-col gap-2">
@@ -91,10 +91,10 @@ export default function FilterControllerCard({
         )}
       >
         <div className="filter-controller-section-header flex flex-col gap-2">
-          <h3 className="filter-controller-section-title FilterControllerSectionTitle text-sm sm:text-base font-bold uppercase tracking-wide">
+          <h3 className="filter-controller-section-title FilterControllerSectionTitle text-product-name font-medium tracking-normal text-carbon">
             Preco
           </h3>
-          <span className="filter-controller-section-divider h-px w-full bg-foreground/10" />
+          <span className="filter-controller-section-divider h-px w-full bg-cloud" />
         </div>
 
         <IntervalSliderInput

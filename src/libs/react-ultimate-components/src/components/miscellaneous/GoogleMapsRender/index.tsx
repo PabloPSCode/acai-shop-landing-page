@@ -129,7 +129,7 @@ export default function GoogleMapsRender({
       )}
       <div
         className={clsx(
-          "relative w-full overflow-hidden bg-background border border-foreground/10 shadow-sm"
+          "relative w-full overflow-hidden bg-background"
         )}
         style={{ borderRadius, minHeight }}
       >

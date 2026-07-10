@@ -16,7 +16,7 @@ export default function Subtitle({
   return (
     <Component
       className={[
-        "min-w-0 font-primary break-words text-sm leading-relaxed text-foreground/75 sm:text-base",
+        "min-w-0 font-primary break-words text-body font-normal tracking-normal text-graphite",
         className ?? "",
       ]
         .filter(Boolean)

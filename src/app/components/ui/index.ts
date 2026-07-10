@@ -1,3 +1,4 @@
+export { default as CTAButton } from "./CTAButton";
 export { default as FadeContainer } from "./FadeContainer";
 export { default as HeroSection } from "./HeroSection";
 export { default as InfoCard } from "./InfoCard";

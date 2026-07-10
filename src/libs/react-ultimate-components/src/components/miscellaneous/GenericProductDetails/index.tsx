@@ -234,41 +234,39 @@ export default function GenericProductDetails({
           )}
         </div>
       </div>
-      <div className="flex-1 w-full rounded-md p-4 sm:p-6 shadow-sm backdrop-blur">
+      <div className="flex-1 w-full rounded-surface p-4 sm:p-6">
         <div className="flex flex-col gap-3 text-foreground">
-          <h2 className="text-lg sm:text-xl font-semibold leading-tight">
+          <h2 className="text-hero font-medium tracking-normal leading-[1.2] text-carbon">
             {product.name}
           </h2>
           <div className="flex flex-wrap items-center gap-3">
-            <p className="text-xl sm:text-2xl font-bold text-foreground">
+            <p className="text-promo font-normal text-carbon">
               {formattedPrice}
             </p>
             {formattedOldPrice && (
-              <span className="text-sm sm:text-base text-foreground/60 line-through">
+              <span className="text-body text-silver-fog line-through">
                 {formattedOldPrice}
               </span>
             )}
             {discountPercentage && (
-              <span className="inline-flex items-center rounded-full bg-primary-500/15 px-3 py-1 text-xs font-semibold text-primary-600 dark:text-primary-400">
+              <span className="inline-flex items-center rounded-control bg-surface-alt px-3 py-1 text-body font-medium text-primary-500">
                 -{discountPercentage}% OFF
               </span>
             )}
           </div>
-          <div className="h-px w-full bg-foreground/10" />
-          <span className="text-sm sm:text-base font-semibold uppercase tracking-[0.2em] text-foreground/60">
+          <div className="h-px w-full bg-cloud" />
+          <span className="text-product-name font-medium tracking-normal text-carbon">
             Descrição
           </span>
-          <p className="text-sm sm:text-base leading-relaxed text-foreground/90">
-            {product.description}
-          </p>
+          <p className="text-body text-graphite">{product.description}</p>
         </div>
         <div className="w-full max-w-69 mt-6 flex flex-col gap-3 ">
           <button
             type="button"
             onClick={handleAddToCart}
-            className="w-fit items-center justify-center gap-2 rounded-xl bg-primary-500 px-4 py-3 text-base font-semibold text-white shadow-sm transition focus-visible:outline-none focus-visible:ring-2 cursor-pointer"
+            className="inline-flex min-h-10 w-fit items-center justify-center gap-2 rounded-control bg-primary-500 px-4 text-nav font-medium tracking-normal text-white transition-colors duration-base hover:bg-primary-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 cursor-pointer"
           >
-            <ShoppingCartIcon className="h-5 w-5" weight="bold" />
+            <ShoppingCartIcon className="h-5 w-5" weight="regular" />
             Tenho interesse
           </button>
           <div className="flex flex-col w-full gap-3 sm:w-auto">

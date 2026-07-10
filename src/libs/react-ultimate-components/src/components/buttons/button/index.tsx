@@ -32,11 +32,11 @@ export default function Button({
   return (
     <button
       className={clsx(
-        `flex items-center justify-center w-fit px-3 py-2 sm:px-4 sm:py-3 rounded-md  ${
+        `flex min-h-10 items-center justify-center w-fit px-4 rounded-control text-nav font-medium tracking-normal transition-colors duration-base ${
           variant === "filled"
-            ? "bg-primary-500 text-white"
+            ? "bg-primary-500 text-white hover:bg-primary-600"
             : variant === "outlined"
-            ? "border border-primary-500 text-primary-500"
+            ? "bg-bg-card text-graphite hover:bg-surface-alt"
             : variant === "alert"
             ? "bg-amber-500 text-white"
             : variant === "destructive"

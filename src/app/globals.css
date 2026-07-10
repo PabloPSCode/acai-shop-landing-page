@@ -37,10 +37,26 @@
   --color-secondary-900: #410749;
   --color-secondary-950: #2b0531;
 
-  --color-background: #fbf7ff;
-  --color-foreground: #21082e;
+  --color-background: #ffffff;
+  --color-foreground: #171a20;
   --color-bg-card: #ffffff;
-  --color-border-card: #eadcf2;
+  --color-border-card: #eeeeee;
+
+  --color-surface-alt: #f4f4f4;
+  --color-carbon: #171a20;
+  --color-graphite: #393c41;
+  --color-pewter: #5c5e62;
+  --color-silver-fog: #8e8e8e;
+  --color-cloud: #eeeeee;
+  --color-pale-silver: #d0d1d2;
+  --color-frost: rgba(255, 255, 255, 0.75);
+  --color-scrim: rgba(23, 26, 32, 0.35);
+
+  --radius-control: 4px;
+  --radius-surface: 12px;
+
+  --duration-base: 0.33s;
+  --ease-base: cubic-bezier(0.5, 0, 0, 0.75);
 
   --font-primary: "DM Sans Hnadgloves", var(--font-dm-sans),
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
@@ -53,10 +69,17 @@
 }
 
 :root.dark {
-  --color-background: #16051f;
-  --color-foreground: #f8edff;
-  --color-bg-card: #230b31;
-  --color-border-card: #4c1a69;
+  --color-background: #171a20;
+  --color-foreground: #ffffff;
+  --color-bg-card: #171a20;
+  --color-border-card: #393c41;
+
+  --color-surface-alt: #1f2229;
+  --color-graphite: #d0d1d2;
+  --color-pewter: #8e8e8e;
+  --color-cloud: #393c41;
+  --color-pale-silver: #5c5e62;
+  --color-frost: rgba(23, 26, 32, 0.75);
 }
 
 * {
@@ -71,10 +94,7 @@ html {
 body {
   min-height: 100vh;
   color: var(--color-foreground);
-  background:
-    radial-gradient(circle at top left, rgba(93, 15, 153, 0.12), transparent 32%),
-    radial-gradient(circle at top right, rgba(135, 15, 153, 0.1), transparent 30%),
-    linear-gradient(180deg, #ffffff 0%, #fbf7ff 62%, #ffffff 100%);
+  background: var(--color-background);
 }
 
 h1,
@@ -86,16 +106,40 @@ h6,
 button,
 a {
   font-family: var(--font-secondary);
+  font-weight: 500;
+  letter-spacing: normal;
 }
 
 button {
   display: flex;
   cursor: pointer;
+  transition:
+    border-color var(--duration-base),
+    background-color var(--duration-base),
+    color var(--duration-base),
+    box-shadow 0.25s;
+}
+
+a {
+  transition:
+    box-shadow var(--duration-base) var(--ease-base),
+    color var(--duration-base);
 }
 
 button:disabled {
   opacity: 0.5;
   cursor: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  button,
+  a {
+    transition: none;
+  }
 }
 
 .react-datepicker__current-month,

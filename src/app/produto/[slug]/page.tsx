@@ -25,7 +25,7 @@ export default function Home() {
     return (
       <main className="w-full bg-background text-foreground">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-12">
-          <h2 className="text-xl sm:text-2xl font-black uppercase text-foreground">
+          <h2 className="text-hero font-medium tracking-normal text-carbon">
             Produto não encontrado
           </h2>
         </div>
@@ -36,16 +36,16 @@ export default function Home() {
   return (
     <main className="w-full bg-background text-foreground">
       {/* Top categories */}
-      <div className="w-screen bg-white px-2">
+      <div className="w-screen bg-background px-2">
         <TopMenu
           menuItems={topMenuItems}
-          className="w-full bg-white text-foreground"
-          itemClassName="text-sm font-semibold text-foreground hover:text-primary-600"
+          className="w-full bg-background text-foreground"
+          itemClassName="text-nav font-medium text-carbon hover:text-primary-500"
         />
       </div>
 
-      <div className=" w-full max-w-7xl flex items-center gap-2 mx-auto px-4 pt-4 text-sm text-foreground/70">
-        <span className="min-w-[120px] line-clamp-1 font-semibold">
+      <div className=" w-full max-w-7xl flex items-center gap-2 mx-auto px-4 pt-4 text-body text-pewter">
+        <span className="min-w-[120px] line-clamp-1 font-medium">
           Você está em:
         </span>
         <Breadcrumb currentPath={currentPath} />
@@ -54,7 +54,7 @@ export default function Home() {
       {/* Products */}
       <section
         id="produto"
-        className="bg-background pb-12 sm:pb-24 pt-6 sm:pt-12"
+        className="bg-background pb-24 pt-8 sm:pb-32 sm:pt-12"
       >
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4">
           <GenericProductDetails

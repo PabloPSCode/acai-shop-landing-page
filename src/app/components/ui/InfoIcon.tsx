@@ -23,18 +23,13 @@ export default function InfoIcon({
         .filter(Boolean)
         .join(" ")}
     >
-      <div className="w-full mx-auto flex justify-center text-primary-600">
+      <div className="w-full mx-auto flex justify-center text-primary-500">
         {icon}
       </div>
       <div className="min-w-0">
-
-        <Title
-          as="h3"
-          className="mt-3 !text-2xl !xl:text-4xl leading-tight text-center"
-        >
+        <Title as="h3" className="mt-3 !text-product-name text-center">
           {title}
         </Title>
-
       </div>
     </div>
   );

@@ -169,9 +169,9 @@ function CTA({ className, label, ...rest }: CTAProps) {
     <button
       {...rest}
       className={clsx(
-        "inline-flex items-center justify-center rounded-lg",
-        "bg-primary-500 font-primary hover:opacity-90",
-        "px-4 py-2 text-xs sm:text-sm font-semibold text-white",
+        "inline-flex min-h-10 items-center justify-center rounded-control",
+        "bg-primary-500 font-primary transition-colors duration-base hover:bg-primary-600",
+        "px-4 text-nav font-medium tracking-normal text-white",
         className
       )}
     >
@@ -191,8 +191,8 @@ function MobileMenuToggle({ open, onToggle, className, ...rest }: React.ButtonHT
     onClick={() => onToggle?.(!open)}
     {...rest}
     className={clsx(
-      "flex md:invisible h-9 w-9 md:w-0 md:h-0 items-center justify-center rounded-lg",
-      "hover:bg-primary/10",
+      "flex md:invisible h-8 w-8 md:w-0 md:h-0 items-center justify-center rounded-control",
+      "transition-colors duration-base hover:bg-surface-alt",
       className
     )}
   >

@@ -87,15 +87,15 @@ export default function PillNav({
     <nav
       aria-label={ariaLabel}
       className={clsx(
-        "PillNav rounded-full bg-white/10 p-1 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.18)]",
-        isVertical && "w-full rounded-[24px] bg-transparent p-0 shadow-none",
+        "PillNav bg-transparent p-0",
+        isVertical && "w-full",
         className,
       )}
     >
       <ul
         className={clsx(
           "flex list-none items-center gap-1",
-          isVertical ? "w-full flex-col items-stretch gap-2" : "flex-row",
+          isVertical ? "w-full flex-col items-stretch gap-1" : "flex-row",
           listClassName,
         )}
       >
@@ -115,14 +115,13 @@ export default function PillNav({
                   onNavigate?.();
                 }}
                 className={clsx(
-                  "inline-flex min-h-10 items-center justify-center rounded-full px-5 py-2 text-sm font-bold uppercase tracking-[0.12em] transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-200 focus-visible:ring-offset-2",
-                  isVertical && "min-h-12 w-full px-4 py-3",
+                  "inline-flex min-h-8 items-center justify-center rounded-control px-4 py-1 text-nav font-medium tracking-normal transition-colors duration-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2",
+                  isVertical && "min-h-11 w-full justify-start px-4 py-3",
                   itemClassName,
                   isActive
-                    ? activeItemClassName ??
-                        "bg-white text-secondary-700 shadow-sm"
+                    ? activeItemClassName ?? "bg-surface-alt text-carbon"
                     : inactiveItemClassName ??
-                        "text-white/80 hover:bg-white/10 hover:text-white",
+                        "text-carbon hover:bg-surface-alt",
                 )}
               >
                 {item.label}

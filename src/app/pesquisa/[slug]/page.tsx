@@ -122,27 +122,27 @@ export default function Home() {
   return (
     <main className="w-full bg-background text-foreground">
       {/* Top categories */}
-      <div className="w-screen bg-white px-2">
+      <div className="w-screen bg-background px-2">
         <TopMenu
           menuItems={topMenuItems}
-          className="w-full bg-white text-foreground"
-          itemClassName="text-sm font-semibold text-foreground hover:text-primary-600"
+          className="w-full bg-background text-foreground"
+          itemClassName="text-nav font-medium text-carbon hover:text-primary-500"
         />
       </div>
 
       <div className="max-w-7xl flex flex-col mx-auto items-start px-4 pt-6 pb-10 gap-2 text-foreground">
-        <div className=" w-full  flex items-center gap-2 mx-auto text-sm">
-          <span className="min-w-[120px] line-clamp-1 font-semibold">
+        <div className=" w-full  flex items-center gap-2 mx-auto text-body text-pewter">
+          <span className="min-w-[120px] line-clamp-1 font-medium">
             Você está em:
           </span>
           <Breadcrumb currentPath={currentPath} />
         </div>
-        <span className="text-sm mt-4">
+        <span className="text-body mt-4 text-graphite">
           Resultados encontrados para a busca: {searchTerm || "Todos"}
         </span>
       </div>
 
-      <section className="max-w-7xl bg-background grid grid-cols-1 lg:grid-cols-4 mx-auto gap-4 px-4 pb-16">
+      <section className="max-w-7xl bg-background grid grid-cols-1 lg:grid-cols-4 mx-auto gap-8 px-4 pb-24">
         <div className="lg:col-span-1">
           <FilterControllerCard
             categories={categories}
@@ -155,7 +155,7 @@ export default function Home() {
             onResetFilters={handleResetFilters}
           />
         </div>
-        <div className="lg:col-span-3 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="lg:col-span-3 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => {
               const productCategorySlug = product.categoryId
@@ -183,7 +183,7 @@ export default function Home() {
                       : "Tenho interesse"
                   }
                   shareLabel="Compartilhar"
-                  className="h-full"
+                  className="h-full !rounded-surface !border-0 !shadow-none hover:!translate-y-0 hover:!shadow-none"
                   enablePizzaOrderAssistant={isAcaiProduct}
                   enableOrderAssistant={usesOrderAssistant}
                   onPizzaOrderFinish={(order) =>
@@ -219,7 +219,7 @@ export default function Home() {
               );
             })
           ) : (
-            <span className="text-foreground/70 p-4 col-span-full">
+            <span className="text-body text-pewter p-4 col-span-full">
               Nenhum produto encontrado para os filtros aplicados.
             </span>
           )}

@@ -12,7 +12,7 @@ import GoogleMapsRender from "../../libs/react-ultimate-components/src/component
 import FooterRC from "../../libs/react-ultimate-components/src/components/elements/Footer";
 import { landingNavigationItems } from "../../mock";
 import { useStore } from "../providers/StoreProvider";
-import { Section, Subtitle, Title } from "./ui";
+import { Section, Title } from "./ui";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -142,18 +142,18 @@ export default function Footer() {
     <>
       <Section
         id="contato"
-        className="bg-[linear-gradient(180deg,#fbf7ff_0%,#f4eafd_100%)] py-16 sm:py-20"
-        containerClassName="gap-10"
+        className="bg-surface-alt"
+        containerClassName="gap-12"
       >
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <Title as="h2" className="mt-0">
-            CONTATO
+            Contato
           </Title>
         </div>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.95fr)] lg:items-start">
           <div className="flex flex-col gap-6">
-            <Title as="h3" className="mt-0 !text-2xl">
+            <Title as="h3" className="mt-0 !text-product-name">
               Informações de contato
             </Title>
 
@@ -167,12 +167,12 @@ export default function Footer() {
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noreferrer" : undefined}
-                    className="group flex min-h-[76px] items-center gap-4 rounded-[24px] border border-border-card/50 bg-white px-5 py-4 shadow-[0_12px_28px_rgba(32,24,18,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_38px_rgba(32,24,18,0.10)]"
+                    className="group flex min-h-[76px] items-center gap-4 rounded-control bg-bg-card px-5 py-4 transition-colors duration-base hover:bg-cloud"
                   >
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary-500/10 text-primary-500">
-                      <IconComponent weight="fill" className="h-7 w-7" />
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-control text-primary-500">
+                      <IconComponent weight="regular" className="h-6 w-6" />
                     </span>
-                    <span className="min-w-0 break-words text-sm font-medium text-foreground sm:text-base">
+                    <span className="min-w-0 break-words text-body font-normal text-graphite">
                       {item.label}
                     </span>
                   </a>
@@ -183,7 +183,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-6">
-            <Title as="h3" className="mt-0 !text-2xl">
+            <Title as="h3" className="mt-0 !text-product-name">
               Onde estamos
             </Title>
 
@@ -192,7 +192,7 @@ export default function Footer() {
               address={mapAddress || addressLine}
               title={`Mapa da ${storeData.store.name}`}
               aspect="4:3"
-              borderRadius={28}
+              borderRadius={12}
               minHeight={420}
               containerClassName="w-full"
             />
@@ -200,11 +200,11 @@ export default function Footer() {
         </div>
       </Section>
 
-      <FooterRC.Root bordered className="bg-secondary-500 text-white/60">
+      <FooterRC.Root bordered={false} className="bg-carbon text-pale-silver">
         <FooterRC.Top columns={4}>
-          <FooterRC.Column items={institutionalItems} title="NAVEGAÇÃO"  />
-          <FooterRC.Column items={supportItems} title="ATENDIMENTO" />
-          <FooterRC.Column items={deliveryItems} title="ENTREGAS" />
+          <FooterRC.Column items={institutionalItems} title="Navegação" />
+          <FooterRC.Column items={supportItems} title="Atendimento" />
+          <FooterRC.Column items={deliveryItems} title="Entregas" />
           <FooterRC.Column
             items={[
               {
@@ -212,15 +212,15 @@ export default function Footer() {
                 label: "Pagamento protegido",
               },
             ]}
-            title="SITE SEGURO"
+            title="Site seguro"
           />
         </FooterRC.Top>
         <FooterRC.SocialRow
           title={`Acompanhe a ${storeData.store.name}`}
-          iconsClassName="text-white/70 hover:text-white"
-          iconsWeight="fill"
+          iconsClassName="text-pale-silver hover:text-white"
+          iconsWeight="regular"
           items={socialItems}
-          className="bg-primary-700/50"
+          className="bg-transparent"
         />
         <FooterRC.Bottom>
           <div className="mb-4 flex w-full flex-col gap-4 break-words">
@@ -229,9 +229,9 @@ export default function Footer() {
                 © {footerYear} {storeData.store.name} — CNPJ:{" "}
                 {storeData.legal?.cnpj}
               </p>
-              <p className="text-foreground/70">{addressText}</p>
+              <p className="text-pewter">{addressText}</p>
             </div>
-            <p className="text-xs text-foreground/60">
+            <p className="text-body text-pewter">
               Cardápio virtual de referência com dados mockados para template
               UI.
             </p>

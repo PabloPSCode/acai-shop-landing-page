@@ -1,32 +1,22 @@
 "use client";
 
-import {
-  BowlFoodIcon,
-  ListIcon,
-  MotorcycleIcon,
-  TimerIcon,
-} from "@phosphor-icons/react";
+import { ListIcon } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
-import Button from "../libs/react-ultimate-components/src/components/buttons/button";
 import CategoryCard from "../libs/react-ultimate-components/src/components/cards/CategoryCard";
 import ProductCard from "../libs/react-ultimate-components/src/components/cards/ProductCard";
 import VideoSection from "../libs/react-ultimate-components/src/components/elements/VideoSection";
 import Paragraph from "../libs/react-ultimate-components/src/components/typography/Paragraph";
-import {
-  landingInfos,
-  menuCategories,
-  menuProducts,
-} from "../mock";
+import { menuCategories, menuProducts } from "../mock";
 import type { MenuCategorySlug } from "../mock/categories";
 import { splitIngredientsList } from "../utils/format";
 import { sendMessageWhatsapp } from "../utils/helpers";
 import {
+  CTAButton,
   FadeContainer,
-  InfoIcon,
+  HeroSection,
   RevealContainer,
   Section,
-  Subtitle,
   Title,
   ZoomContainer,
 } from "./components/ui";
@@ -41,12 +31,6 @@ const ACAI_CATEGORY_SLUGS = new Set<MenuCategorySlug>([
   "acai-750ml",
 ]);
 const ORDER_ASSISTANT_CATEGORY_SLUGS = new Set<MenuCategorySlug>([]);
-
-const INFO_ICON_BY_KEY = {
-  timer: TimerIcon,
-  delivery: MotorcycleIcon,
-  menu: BowlFoodIcon,
-} as const;
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] =
@@ -89,77 +73,63 @@ export default function Home() {
   }
 
   return (
-    <main
-      id="topo"
-      className="min-h-screen w-full bg-background text-foreground"
-    >
-      <section className="relative overflow-hidden ">
-        <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-r from-secondary-400 via-black/50 to-secondary-400 flex flex-col items-center justify-center" />
-        <VideoSection
-          size="full"
-          videoUrl="/acai.mp4"
-          showPlayPauseButton={false}
-          showOverlay
-          containerClassName="!min-h-[82vh] bg-transparent"
-        />
-      </section>
+    <main id="topo" className="w-full bg-background text-foreground">
+      <HeroSection
+        scrim
+        scrimClassName="bg-gradient-to-r from-secondary-400 via-black/50 to-secondary-400"
+        background={
+          <VideoSection
+            size="full"
+            videoUrl="/acai.mp4"
+            showPlayPauseButton={false}
+            showOverlay={false}
+            containerClassName="!min-h-screen h-full bg-transparent"
+          />
+        }
+      >
+        <RevealContainer once className="flex flex-col items-center gap-6">
+          <Title as="h1" className="max-w-3xl text-center text-white">
+            Açaí cremoso em Monlevade, montado com seus adicionais favoritos
+          </Title>
 
-      <div className="absolute inset-0 z-30 flex flex-col items-center justify-center h-full">
-        <div className="mx-auto my-auto min-h-[95vh] flex w-full max-w-7xl items-center justify-center px-6 pb-16 lg:px-8">
-          <RevealContainer
+          <Paragraph
+            content="Escolha 300ml, 500ml ou 750ml e finalize com Chocoball, Sonho de Valsa, Trento, frutas e cremes."
+            className="mx-auto max-w-xl text-center !text-promo !font-normal text-white"
+          />
+
+          <FadeContainer
             once
-            className="pointer-events-auto m-auto space-y-8"
+            className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
           >
-            <Title
-              as="h1"
-              className="max-w-[70vw] sm:max-w-[50vw]  xl:max-w-[50vw] text-center !text-3xl leading-[0.96] tracking-normal text-white sm:!text-5xl mt-12"
-            >
-              Açaí cremoso em Monlevade, montado com seus adicionais favoritos
-            </Title>
-
-            <Paragraph
-              content="Escolha 300ml, 500ml ou 750ml e finalize com Chocoball, Sonho de Valsa, Trento, frutas e cremes."
-              className="max-w-[70vw] sm:max-w-[50vw] xl:max-w-[40vw] mx-auto text-center !text-lg md:!text-xl leading-[1.55] text-white/80"
+            <CTAButton
+              type="button"
+              label="Ver cardápio"
+              onClick={() => scrollToSection("cardapio")}
             />
+          </FadeContainer>
+        </RevealContainer>
+      </HeroSection>
 
-            <FadeContainer
-              once
-              className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
-            >
-              <Button
-                type="button"
-                label="Ver cardápio"
-                onClick={() => scrollToSection("cardapio")}
-                className="!rounded-full !bg-secondary-500 !px-8 !py-4 !text-white !shadow-none"
-              />
-            </FadeContainer>
-          </RevealContainer>
-        </div>
-      </div>
-
-      <Section id="cardapio" className="bg-white" containerClassName="gap-6">
+      <Section id="cardapio" containerClassName="gap-12">
         <FadeContainer
           once
           className="flex justify-center items-center mx-auto gap-3"
         >
-          <ListIcon className="w-6 h-6 sm:w-8 sm:h-8" />
-          <Subtitle
-            as="span"
-            className="text-[0.72rem] font-semibold uppercase tracking-[0.34em] text-center mx-auto text-black w-fit mt-1"
-          >
+          <ListIcon className="h-5 w-5 text-carbon" weight="regular" />
+          <Title as="h2" className="w-fit text-center">
             Cardápio
-          </Subtitle>
+          </Title>
         </FadeContainer>
 
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap justify-center gap-2">
           <button
             type="button"
             onClick={() => handleCategorySelection("todos")}
             className={[
-              "rounded-full border px-5 py-3 text-sm font-semibold transition",
+              "min-h-8 rounded-control px-4 py-1 font-medium transition-colors duration-base",
               selectedCategory === "todos"
-                ? "border-primary-500 bg-primary-500 text-white"
-                : "border-border-card bg-bg-card text-foreground hover:bg-foreground/5",
+                ? "bg-primary-500 text-white"
+                : "bg-surface-alt text-carbon hover:bg-cloud",
             ].join(" ")}
           >
             Todas as opções
@@ -173,10 +143,10 @@ export default function Home() {
                 name={category.name}
                 imgUrl={category.image}
                 className={[
-                  "h-full",
+                  "h-full !rounded-surface !border-0 !shadow-none",
                   selectedCategory === category.slug
-                    ? "!border-primary-500 ring-2 ring-primary-300/60"
-                    : "",
+                    ? "!bg-surface-alt"
+                    : "!bg-transparent",
                 ]
                   .filter(Boolean)
                   .join(" ")}
@@ -185,7 +155,7 @@ export default function Home() {
             </ZoomContainer>
           ))}
         </div>
-        <div className="grid gap-6 grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-8 grid-cols-2 xl:grid-cols-3">
           {filteredProducts.map((product, index) => {
             const isAcaiProduct = ACAI_CATEGORY_SLUGS.has(
               product.categorySlug,
@@ -197,7 +167,7 @@ export default function Home() {
             return (
               <ZoomContainer
                 key={product.id}
-                once={index < 6}
+                once
                 delayMs={(index % 3) * 65}
               >
                 <div className="flex h-full flex-col gap-3">
@@ -214,7 +184,7 @@ export default function Home() {
                         ? "Montar açaí"
                         : "Tenho interesse"
                     }
-                    className="h-full"
+                    className="h-full !rounded-surface !border-0 !shadow-none hover:!translate-y-0 hover:!shadow-none"
                     enablePizzaOrderAssistant={isAcaiProduct}
                     enableOrderAssistant={usesOrderAssistant}
                     onPizzaOrderFinish={(order) =>

@@ -15,6 +15,15 @@ const config: Config = {
         foreground: "var(--color-foreground)",
         "bg-card": "var(--color-bg-card)",
         "border-card": "var(--color-border-card)",
+        "surface-alt": "var(--color-surface-alt)",
+        carbon: "var(--color-carbon)",
+        graphite: "var(--color-graphite)",
+        pewter: "var(--color-pewter)",
+        "silver-fog": "var(--color-silver-fog)",
+        cloud: "var(--color-cloud)",
+        "pale-silver": "var(--color-pale-silver)",
+        frost: "var(--color-frost)",
+        scrim: "var(--color-scrim)",
         primary: {
           50: "var(--color-primary-50)",
           100: "var(--color-primary-100)",
@@ -114,10 +123,25 @@ const config: Config = {
       fontWeight: {
         regular: "400",
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontSize: {
+        // Tesla's hierarchy: everything clusters at 14px except hero (40px)
+        // and promo (22px). Values are [size, { lineHeight }].
+        nav: ["0.875rem", { lineHeight: "1.05rem" }],
+        body: ["0.875rem", { lineHeight: "1.25rem" }],
+        "product-name": ["1.0625rem", { lineHeight: "1.25rem" }],
+        promo: ["1.375rem", { lineHeight: "1.75rem" }],
+        hero: ["2.5rem", { lineHeight: "3rem" }],
+      },
+      borderRadius: {
+        control: "var(--radius-control)",
+        surface: "var(--radius-surface)",
+      },
+      transitionDuration: {
+        DEFAULT: "330ms",
+        base: "330ms",
+      },
+      transitionTimingFunction: {
+        base: "var(--ease-base)",
       },
     },
   },

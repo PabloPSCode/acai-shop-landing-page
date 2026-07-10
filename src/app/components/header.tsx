@@ -1,20 +1,20 @@
 "use client";
 
 import {
-  BowlFoodIcon,
-  ShoppingCartIcon,
+  ShoppingCartIcon
 } from "@phosphor-icons/react";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 import { useEffect, useMemo, useState } from "react";
+import toast from "react-hot-toast";
 import LandingHeader from "../../libs/react-ultimate-components/src/components/elements/LandingHeader";
 import OrderFinalizationModal from "../../libs/react-ultimate-components/src/components/modals/OrderFinalizationModal";
-import Cart from "../../libs/react-ultimate-components/src/components/navigation/Cart";
 import type {
   FinalizedOrderData,
   OrderFinalizationPayload,
   OrderFinalizationResult,
 } from "../../libs/react-ultimate-components/src/components/modals/OrderFinalizationModal/index";
+import Cart from "../../libs/react-ultimate-components/src/components/navigation/Cart";
 import {
   showToastError,
   showToastLoading,
@@ -31,7 +31,6 @@ import {
   Subtitle,
   Title,
 } from "./ui";
-import Image from "next/image";
 
 const ORDER_FINALIZATION_ADDRESSES_STORAGE_KEY =
   "@monlevadeacai:order-finalization-addresses";
@@ -190,8 +189,9 @@ export default function Header() {
   return (
     <>
       <LandingHeader.Root
-        className="bg-secondary-500 shadow-sm backdrop-blur-md min-h-[80px] pt-5"
+        className="!min-h-[72px] items-center bg-frost px-4 py-2 backdrop-blur-md sm:min-h-0"
         bordered={false}
+        size="sm"
         sticky
         style={{ zIndex: 9999 }}
       >
@@ -201,17 +201,15 @@ export default function Header() {
             onClick={handleGoHome}
             className="flex min-w-0 items-center gap-3"
           >
-            <span
-              aria-hidden="true"
-              className="flex items-center justify-center rounded-full bg-primary-500 text-white "
-            >
-              <Image src="/logo.png" alt="Logo" width={56} height={56} className="h-12 w-12 sm:h-14 sm:w-14" />
+            <span aria-hidden="true" className="flex items-center justify-center">
+              <Image src="/logo.png" alt="Logo" width={56} height={56} className="h-6 w-6 sm:h-8 sm:w-8" />
             </span>
 
             <span className="flex min-w-0 flex-col items-start leading-tight">
+              {/* Wordmark: the one place letter-spacing is deliberate. */}
               <Title
                 as="span"
-                className="min-w-0 truncate !text-2xl leading-none !sm:text-4xl text-white"
+                className="min-w-0 truncate !text-product-name uppercase tracking-[0.28em] text-carbon"
               >
                 {storeData.store.name}
               </Title>
@@ -220,27 +218,22 @@ export default function Header() {
         </LandingHeader.Left>
 
         <LandingHeader.Center className="hidden lg:flex">
-          <PillNav
-            items={navigationItems}
-            className="border border-white/20 bg-white/10"
-            activeItemClassName="bg-white text-secondary-700 shadow-sm"
-            inactiveItemClassName="text-white/85 hover:bg-white/10 hover:text-white"
-          />
+          <PillNav items={navigationItems} />
         </LandingHeader.Center>
 
-        <LandingHeader.Right className="flex items-center gap-2 sm:gap-3">
+        <LandingHeader.Right className="flex items-center gap-5 sm:gap-6">
           <button
             type="button"
             onClick={() => {
               setShowMobileMenu(false);
               openCart();
             }}
-            className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-border-card bg-white text-foreground transition hover:border-primary-500 hover:text-primary-600"
+            className="relative inline-flex h-8 w-8 items-center justify-center rounded-control text-carbon transition-colors duration-base hover:bg-surface-alt"
             aria-label="Abrir carrinho"
           >
-            <ShoppingCartIcon weight="bold" className="h-5 w-5" />
+            <ShoppingCartIcon weight="regular" className="h-5 w-5" />
             {itemCount > 0 ? (
-              <span className="absolute -right-1 -top-1 inline-flex min-h-5 min-w-5 items-center justify-center rounded-full bg-primary-500 px-1 text-[10px] font-semibold text-white">
+              <span className="absolute -right-1 -top-1 inline-flex min-h-5 min-w-5 items-center justify-center rounded-full bg-primary-500 px-1 text-[10px] font-medium text-white">
                 {itemCount > 99 ? "99+" : itemCount}
               </span>
             ) : null}
@@ -248,17 +241,14 @@ export default function Header() {
           <MobileMenuToggleButton
             open={showMobileMenu}
             onToggle={setShowMobileMenu}
-            className="rounded-full border border-border-card bg-white"
+            className="rounded-control text-carbon lg:hidden !p-0"
           />
         </LandingHeader.Right>
 
         <MobilePanel open={showMobileMenu}>
           <li className="w-full list-none px-2">
-            <div className="rounded-[28px] border border-border-card bg-white p-5 text-left shadow-sm">
-              <Subtitle
-                as="span"
-                className="text-[0.72rem] font-semibold uppercase tracking-[0.3em] text-primary-600"
-              >
+            <div className="bg-bg-card p-5 text-left">
+              <Subtitle as="span" className="text-pewter">
                 Navegação rápida
               </Subtitle>
               <PillNav
@@ -266,9 +256,8 @@ export default function Header() {
                 orientation="vertical"
                 onNavigate={() => setShowMobileMenu(false)}
                 className="mt-4"
-                itemClassName="border border-border-card"
-                activeItemClassName="border-primary-500 bg-primary-500 text-white shadow-sm"
-                inactiveItemClassName="bg-white text-foreground hover:border-primary-200 hover:bg-primary-50 hover:text-primary-700"
+                activeItemClassName="bg-primary-500 text-white"
+                inactiveItemClassName="text-carbon hover:bg-surface-alt"
               />
             </div>
           </li>
